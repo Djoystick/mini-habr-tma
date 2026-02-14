@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
-
+export const dynamic = 'force-dynamic';
 import { useMemo } from 'react';
 import {
   initData,
