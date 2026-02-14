@@ -1,4 +1,4 @@
-import InitDataPageClient from './InitDataClient';
+import InitDataPageClient from './InitDataPageClient';
 
 export const dynamic = 'force-dynamic';
 

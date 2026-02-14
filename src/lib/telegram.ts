@@ -7,36 +7,22 @@ export type TelegramUser = {
   photo_url?: string;
 };
 
-export function getTelegramUserSafe(): TelegramUser | null {
+export function getTelegramWebApp(): { initData?: string; initDataUnsafe?: { user?: TelegramUser } } | null {
   if (typeof window === 'undefined') return null;
+  return (window as unknown as { Telegram?: { WebApp?: { initData?: string; initDataUnsafe?: { user?: TelegramUser } } } }).Telegram?.WebApp ?? null;
+}
 
-  const anyWindow = window as typeof window & {
-    Telegram?: {
-      WebApp?: {
-        initDataUnsafe?: { user?: TelegramUser };
-      };
-    };
-  };
-  const tg = anyWindow.Telegram?.WebApp;
-  const user = tg?.initDataUnsafe?.user;
-
+export function getTelegramUserSafe(): TelegramUser | null {
+  const tg = getTelegramWebApp();
+  if (!tg) return null;
+  const user = tg.initDataUnsafe?.user;
   if (!user?.id) return null;
-
   return user;
 }
 
 export function getInitDataSafe(): string | null {
-  if (typeof window === 'undefined') return null;
-
-  const anyWindow = window as typeof window & {
-    Telegram?: {
-      WebApp?: {
-        initData?: string;
-      };
-    };
-  };
-
-  const initData = anyWindow.Telegram?.WebApp?.initData;
-
+  const tg = getTelegramWebApp();
+  if (!tg) return null;
+  const initData = tg.initData;
   return initData && initData.length > 0 ? initData : null;
 }
