@@ -1,3 +1,5 @@
+'use client';
+
 import { openLink } from '@tma.js/sdk-react';
 import { type FC, type MouseEventHandler, type JSX, useCallback } from 'react';
 import {

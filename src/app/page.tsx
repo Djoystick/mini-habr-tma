@@ -1,63 +1,30 @@
+// src/app/page.tsx
 'use client';
 
-import { Section, Cell, Image, List } from '@telegram-apps/telegram-ui';
-import { useTranslations } from 'next-intl';
-
-import { Link } from '@/components/Link/Link';
-import { LocaleSwitcher } from '@/components/LocaleSwitcher/LocaleSwitcher';
-import { Page } from '@/components/Page';
-
-import tonSvg from './_assets/ton.svg';
-
 export default function Home() {
-  const t = useTranslations('i18n');
-
   return (
-    <Page back={false}>
-      <List>
-        <Section
-          header="Features"
-          footer="You can use these pages to learn more about features, provided by Telegram Mini Apps and other useful projects"
-        >
-          <Link href="/ton-connect">
-            <Cell
-              before={
-                <Image
-                  src={tonSvg.src}
-                  style={{ backgroundColor: '#007AFF' }}
-                  alt="TON Logo"
-                />
-              }
-              subtitle="Connect your TON wallet"
-            >
-              TON Connect
-            </Cell>
-          </Link>
-        </Section>
-        <Section
-          header="Application Launch Data"
-          footer="These pages help developer to learn more about current launch information"
-        >
-          <Link href="/init-data">
-            <Cell subtitle="User data, chat information, technical data">
-              Init Data
-            </Cell>
-          </Link>
-          <Link href="/launch-params">
-            <Cell subtitle="Platform identifier, Mini Apps version, etc.">
-              Launch Parameters
-            </Cell>
-          </Link>
-          <Link href="/theme-params">
-            <Cell subtitle="Telegram application palette information">
-              Theme Parameters
-            </Cell>
-          </Link>
-        </Section>
-        <Section header={t('header')} footer={t('footer')}>
-          <LocaleSwitcher />
-        </Section>
-      </List>
-    </Page>
+    <div className="p-6 space-y-4 max-w-4xl mx-auto">
+      <h1 className="text-3xl font-bold text-gray-900 mb-6">MiniHabr</h1>
+      <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+        <h2 className="text-xl font-semibold text-gray-900 mb-2">
+          Как мы запустили Telegram Mini App за вечер
+        </h2>
+        <p className="text-gray-500 text-sm mb-4">@Team • сегодня</p>
+        <div className="flex gap-4 text-sm text-gray-400">
+          <span>💬 3</span>
+          <span>👍 12</span>
+        </div>
+      </div>
+      <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+        <h2 className="text-xl font-semibold text-gray-900 mb-2">
+          Supabase как заменитель собственного бэкенда
+        </h2>
+        <p className="text-gray-500 text-sm mb-4">@Dev • вчера</p>
+        <div className="flex gap-4 text-sm text-gray-400">
+          <span>💬 5</span>
+          <span>👍 20</span>
+        </div>
+      </div>
+    </div>
   );
 }
